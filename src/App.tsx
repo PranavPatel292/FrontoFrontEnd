@@ -1,9 +1,17 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+import { Container } from './components/Container';
+
 function App() {
 
+  const queryClient = new QueryClient();
+
   return (
-    <h1 className="text-3xl font-bold underline text-red-400">
-      Hello world!
-    </h1>
+    <QueryClientProvider client={queryClient}>
+    <Container/>
+    </QueryClientProvider>
 
   )
 }

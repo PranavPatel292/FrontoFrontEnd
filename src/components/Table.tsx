@@ -1,24 +1,28 @@
-interface TablePros {
-    id: number;
-    address: string;
-    valuation: number;
-    hidden: boolean;
-    createdAt: Date;
-}
+import { SkeletonTable } from "./SkeletonTable";
+import { getCustomers } from "../requests/customer";
+import {
+    useQuery
+  } from 'react-query';
+import { DataTable } from "./DataTable";
+import { Error } from "./Error";
 
-export const Table = (data: TablePros) => {
+export const Table = ({}) => {
+    const {isError, isSuccess, isLoading, data, error} = useQuery(
+        ["customer"],
+        getCustomers,
+        {staleTime: 60000}
+    )
+
+    if(isError) return <Error/>
+    
   return (
     <>
-        <div className="flex flex-col">
-            <table className="table-auto">
-                <tr>
-                    <th>ID</th>
-                    <th>Address</th>
-                    <th>Valuation</th>
-                </tr>
-            </table>
-
-        </div>
+    {
+        isLoading && <SkeletonTable/>
+    }
+    {
+        !isLoading && <DataTable data={data.properties}/>
+    }
     </>
   )
 }
