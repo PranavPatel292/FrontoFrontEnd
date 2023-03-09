@@ -1,55 +1,88 @@
-export const Modal = () => {
+import { Formik, Form, Field } from "formik";
+import { useRef } from "react";
+import * as Yup from "yup";
+
+export interface ContactMeFormModalProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ValidationSchema = Yup.object().shape({
+  address: Yup.string().required("Please enter your address 🏠"),
+  valuation: Yup.number()
+    .typeError("Please enter valid number")
+    .required("Please enter any value"),
+});
+
+export const Modal = ({ setIsOpen }: ContactMeFormModalProps) => {
+  const form = useRef<HTMLDivElement>(null);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+      <div
+        ref={form}
+        className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
+      >
         <div className="bg-white p-10  w-[50%] rounded flex flex-col space-y-12">
           <p className="text-xl md:text-2xl">Enter property details</p>
-          <form>
-            <div className="grid gap-6 mb-6 md:grid-cols-1">
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="1 - 7 Hawkesbury road"
-                  required
-                />
-              </div>
-            </div>
+          <Formik
+            initialValues={{
+              address: "",
+              valuation: "",
+            }}
+            validationSchema={ValidationSchema}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {({ errors, touched }) => (
+              <Form className="w-full flex flex-col space-y-5">
+                <div>
+                  <Field
+                    name="address"
+                    placeholder="1- 7 Hawkesbury Road"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                  {errors.address && touched.address ? (
+                    <p className="text-center p-0 text-[#FC1111] font-poppins font-[500] text-sm   leading-[27px]">
+                      {errors.address}
+                    </p>
+                  ) : null}
+                </div>
+                <div>
+                  <Field
+                    name="valuation"
+                    placeholder="10000"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                  {errors.valuation && touched.valuation ? (
+                    <p className="text-[#FC1111] text-center font-poppins font-[500] text-sm   leading-[27px]">
+                      {errors.valuation}
+                    </p>
+                  ) : null}
+                </div>
 
-            <div className="grid gap-6 mb-6 md:grid-cols-1">
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Value
-                </label>
-                <input
-                  type="text"
-                  id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="10000"
-                  required
-                />
-              </div>
-            </div>
-          </form>
-
-          <div className="flex fle-row justify-around">
-            <button
-              type="button"
-              className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-              Submit
-            </button>
-            <button
-              type="button"
-              className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-            >
-              Cancel
-            </button>
-          </div>
+                <div className="flex fle-row justify-around">
+                  <button
+                    type="submit"
+                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="button"
+                    className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </>
