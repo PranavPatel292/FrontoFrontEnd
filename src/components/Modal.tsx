@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
 import { usePostCustomer } from "../requests/customer";
+import { useQueryClient } from "react-query";
 
 export interface ModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +19,7 @@ const ValidationSchema = Yup.object().shape({
 
 export const Modal = ({ setIsOpen }: ModalProps) => {
   const form = useRef<HTMLDivElement>(null);
-
+  const queryClient = useQueryClient();
   const { mutate } = usePostCustomer();
 
   const closeModal = () => {
@@ -64,6 +65,9 @@ export const Modal = ({ setIsOpen }: ModalProps) => {
                     progress: undefined,
                     theme: "dark",
                   });
+                },
+                onSettled: () => {
+                  queryClient.invalidateQueries("customer");
                 },
               });
             }}
