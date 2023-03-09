@@ -17,7 +17,7 @@ export const RowData = (props: RowDataProps) => {
         {dayjs(props.data.created_at).format("DD/MM/YYYY hh:mm:ss (UTCZ)")}
       </td>
       <td className="px-6 py-4">
-        $ {numberFormatter.format(props.data.valuation)}
+        AUD {numberFormatter.format(props.data.valuation)}
       </td>
     </tr>
   );

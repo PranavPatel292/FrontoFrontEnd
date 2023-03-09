@@ -48,7 +48,7 @@ export const DataTable = (data: TablePros) => {
             <td />
             <td />
             <td />
-            <td className="px-6 py-4">$ {numberFormatter.format(sum)}</td>
+            <td className="px-6 py-4">AUD {numberFormatter.format(sum)}</td>
           </tr>
         </tbody>
       </table>
