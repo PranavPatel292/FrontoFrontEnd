@@ -75,6 +75,7 @@ export const Modal = ({ setIsOpen }: ModalProps) => {
             {({ errors, touched }) => (
               <Form className="w-full flex flex-col space-y-5">
                 <div>
+                  <label>Address</label>
                   <Field
                     name="address"
                     placeholder="1- 7 Hawkesbury Road"
@@ -87,6 +88,7 @@ export const Modal = ({ setIsOpen }: ModalProps) => {
                   ) : null}
                 </div>
                 <div>
+                  <label>Valuation</label>
                   <Field
                     name="valuation"
                     placeholder="10000"
