@@ -15,7 +15,7 @@ export const Container = () => {
       <div className="w-full h-full max-w-[1280px] mx-auto">
         <div className="mt-64">
           <div className="w-full  flex flex-row justify-end">
-            <Button setIsOpen={setIsOpen} />
+            <Button setIsOpen={openModal} />
           </div>
           <Table />
         </div>
