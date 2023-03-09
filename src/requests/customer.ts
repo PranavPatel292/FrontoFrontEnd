@@ -1,4 +1,9 @@
+import { useMutation } from "react-query";
 import api from "./axios";
+interface PostCustomerProps {
+  address: string;
+  valuation: string;
+}
 
 const headers = {
   "x-hasura-user-id": import.meta.env.VITE_ACCESS_KEY,
@@ -9,12 +14,12 @@ export const getCustomers = async () => {
   return response.data;
 };
 
-export const postCustomer = async (address: string, valuation: number) => {
-  const data = {
-    address: address,
-    valuation: valuation,
-  };
-
-  const response = await api.post("/properties/add", data, { headers });
-  return response.data;
+export const usePostCustomer = () => {
+  return useMutation((formData: PostCustomerProps) => {
+    const data = {
+      address: formData.address,
+      valuation: parseInt(formData.valuation),
+    };
+    return api.post("/properties/add", data, { headers });
+  });
 };

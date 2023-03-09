@@ -1,8 +1,11 @@
-import { Formik, Form, Field } from "formik";
-import { useRef } from "react";
+import { Formik, Form, Field, useFormik } from "formik";
+import { useRef, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
+import "react-toastify/dist/ReactToastify.css";
+import { usePostCustomer } from "../requests/customer";
 
-export interface ContactMeFormModalProps {
+export interface ModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -13,8 +16,10 @@ const ValidationSchema = Yup.object().shape({
     .required("Please enter any value"),
 });
 
-export const Modal = ({ setIsOpen }: ContactMeFormModalProps) => {
+export const Modal = ({ setIsOpen }: ModalProps) => {
   const form = useRef<HTMLDivElement>(null);
+
+  const { mutate } = usePostCustomer();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -35,7 +40,32 @@ export const Modal = ({ setIsOpen }: ContactMeFormModalProps) => {
             }}
             validationSchema={ValidationSchema}
             onSubmit={(values) => {
-              console.log(values);
+              mutate(values, {
+                onSuccess: () => {
+                  toast.success("Data inserted successfully", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                  });
+                },
+                onError: () => {
+                  toast.error("Sorry something went wrong", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                  });
+                },
+              });
             }}
           >
             {({ errors, touched }) => (
@@ -84,6 +114,17 @@ export const Modal = ({ setIsOpen }: ContactMeFormModalProps) => {
             )}
           </Formik>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );
