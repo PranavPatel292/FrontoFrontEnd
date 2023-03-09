@@ -21,18 +21,74 @@ export const SkeletonTable = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr className="bg-white h-5 border-b dark:bg-gray-800 dark:border-gray-700 animate-pulse">
-              <td
-                scope="row"
-                className=" bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"
-              />
+          <tbody className="space-y-10">
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-60 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+            </tr>
 
-              <td className=" bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4" />
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-60 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+            </tr>
 
-              <td className=" bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4" />
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-60 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+            </tr>
 
-              <td className=" bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4" />
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-4 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-60 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td />
+              <td />
+              <td />
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="w-36 h-4 bg-gray-200 rounded animate-pulse"></div>
+              </td>
             </tr>
           </tbody>
         </table>
