@@ -1,6 +1,6 @@
 # Fronto Front End
 
-This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a frontend table using a API provided.
+This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a frontend table using an API provided.
 
 ## How to run project
 
