@@ -20,11 +20,11 @@ $ yarn add
 VITE_ACCESS_KEY=x-hasura-user-id
 ```
 
-###### 3) To run the project
+###### 4) To run the project
 ```sh
 $ npm run dev
 ```
-###### 4) The server will run on: http://localhost:5173/
+###### 5) The server will run on: http://localhost:5173/
 
 ## Technology used
 
