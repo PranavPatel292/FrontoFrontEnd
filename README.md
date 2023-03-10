@@ -8,6 +8,7 @@ This is task is based on the requirements provided by Fronto for their take home
 ###### 2) use any of your favourite package managing tool, NPM or YARN
 ###### 3) type - npm install or yarn install
 ###### 4) type - npm run dev
+###### 4) the server will run on: http://localhost:5173/
 
 ## Technology used
 
