@@ -1,14 +1,30 @@
-# FrontoFrontEnd
+# Fronto Front End
 
 This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a frontend table using a API provided.
 
-## To run project
+## How to run project
 
-###### 1) first install NodeJS
-###### 2) use any of your favourite package managing tool, NPM or YARN
-###### 3) type - npm install or yarn install
-###### 4) type - npm run dev
-###### 4) the server will run on: http://localhost:5173/
+###### 1) Make sure you have `NodeJS` and a package manager `(YARN or NPM)`
+###### 2) Use npm or yarn to install all the required packages 
+```sh
+$ npm install
+```
+###### or
+```sh
+$ yarn add
+```
+
+###### 3) Add `.env` file at the root of the project
+`.env`
+```js
+VITE_ACCESS_KEY=x-hasura-user-id
+```
+
+###### 3) To run the project
+```sh
+$ npm run dev
+```
+###### 4) The server will run on: http://localhost:5173/
 
 ## Technology used
 
