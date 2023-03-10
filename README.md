@@ -1,4 +1,4 @@
-# Fonto Front End
+# Fonto FrontEnd
 
 This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a frontend table using an API provided.
 
