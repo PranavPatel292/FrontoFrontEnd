@@ -11,12 +11,12 @@ export const Table = ({}) => {
     { staleTime: 60000 }
   );
 
-  if (isError) return <Error />;
+  if (isError || error) return <Error />;
 
   return (
     <>
       {isLoading && <SkeletonTable />}
-      {!isLoading && <DataTable data={data.properties} />}
+      {!isLoading && isSuccess && <DataTable data={data.properties} />}
     </>
   );
 };
